@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "GuestHub API",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "API collection for GuestHub project (Auth, Rooms, Bookings)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:4000/api/health", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","health"] }
+      }
+    },
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"Pass123!\"\n}"
+        },
+        "url": { "raw": "http://localhost:4000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","auth","register"] }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"Pass123!\"\n}"
+        },
+        "url": { "raw": "http://localhost:4000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","auth","login"] }
+      }
+    },
+    {
+      "name": "Protected (Any User)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:4000/api/protected", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","protected"] }
+      }
+    },
+    {
+      "name": "Admin Only Test",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:4000/api/admin-only", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","admin-only"] }
+      }
+    },
+    {
+      "name": "Rooms - List",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:4000/api/rooms", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","rooms"] }
+      }
+    },
+    {
+      "name": "Rooms - Get by ID",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:4000/api/rooms/:id", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","rooms",":id"] }
+      }
+    },
+    {
+      "name": "Rooms - Create (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Presidential Suite\",\n  \"type\": \"Suite\",\n  \"capacity\": 5,\n  \"pricePerNight\": 350,\n  \"description\": \"Top tier luxury suite with private pool.\",\n  \"photos\": [\"https://picsum.photos/seed/presidential/400/300\"],\n  \"isActive\": true\n}"
+        },
+        "url": { "raw": "http://localhost:4000/api/rooms", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","rooms"] }
+      }
+    },
+    {
+      "name": "Bookings - Create (Guest)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roomId\": \"<room_id>\",\n  \"checkIn\": \"2025-09-01\",\n  \"checkOut\": \"2025-09-05\",\n  \"guests\": 2\n}"
+        },
+        "url": { "raw": "http://localhost:4000/api/bookings", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","bookings"] }
+      }
+    },
+    {
+      "name": "Bookings - My Bookings (Guest)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:4000/api/bookings/my", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","bookings","my"] }
+      }
+    },
+    {
+      "name": "Bookings - All (Admin)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "http://localhost:4000/api/bookings", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","bookings"] }
+      }
+    },
+    {
+      "name": "Bookings - Update Status (Admin)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{ \"status\": \"confirmed\" }" },
+        "url": { "raw": "http://localhost:4000/api/bookings/:id", "protocol": "http", "host": ["localhost"], "port": "4000", "path": ["api","bookings",":id"] }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "token", "value": "" }
+  ]
+}

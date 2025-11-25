@@ -1,0 +1,51 @@
+
+@import "tailwindcss";
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F8FAFC; 
+  color: #0F172A;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', 'Cinzel', serif;
+  font-weight: 600;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', serif;
+}
+@keyframes gh-slide-in {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-gh-slide-in {
+  animation: gh-slide-in 260ms ease-out both;
+}
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-out infinite alternate;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1917; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b5952f;
+}
