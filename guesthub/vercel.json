@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "guesthub/index.html",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "guesthub/dist",
+        "buildCommand": "npm install --prefix ./guesthub && npm run build --prefix ./guesthub"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://guesthub-api-onrender.com/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/guesthub/$1"
+    }
+  ]
+}
