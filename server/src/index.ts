@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import path from "path";
 import * as fs from "fs"; 
 
+
 const envPaths = [
   path.resolve(__dirname, "../../.env"),
   path.resolve(__dirname, "../.env")

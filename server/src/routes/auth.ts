@@ -113,7 +113,7 @@ async function sendResetEmail(email: string, code: string, name: string) {
     service: "gmail",
     auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
   });
-  // ... (Reuse existing HTML structure or keep simple) ...
+
   const html = `
     <div style="${STYLE.container}">
        <div style="${STYLE.header}">
