@@ -1,1 +1,0 @@
-import{j as e}from"./index-CtBX9Jbf.js";const t=()=>e.jsxs("div",{children:[e.jsx("h2",{className:"text-2xl font-bold mb-4",children:"About GuestHub"}),e.jsx("p",{children:"Learn more about our services and features."})]});export{t as default};
