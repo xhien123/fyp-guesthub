@@ -39,7 +39,7 @@ type Section =
   | "upcoming"
   | "past"
   | "account"
-  | "orders"
+  | "orders"  
   | "preferences"
   | "support";
 
@@ -488,7 +488,7 @@ const Profile: React.FC = () => {
       }
     })();
 
-    // IMPORTANT: Ensure this matches your server port (4000)
+    
     const socket = io("http://localhost:4000", {
       transports: ['websocket'] // Force websocket to avoid polling issues
     });
